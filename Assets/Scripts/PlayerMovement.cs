@@ -20,24 +20,47 @@ public class PlayerMovement : MonoBehaviour {
     LayerMask whatCountsAsGround;
 
 
-    private bool isOnGround;
-
+    private bool isOnGround = false;
+    private bool shouldJump = false;
     Rigidbody2D myRigidbody;
+    private float horizontalInput;
+    private Vector2 jumpForce;
 
-	// Use this for initialization
+    // Use this for initialization
     void Start () {
         // This code teleports the gameobject to a new location
         //transform.position = new Vector3(0, 0, 0);
 
         myRigidbody = GetComponent<Rigidbody2D>();
+        jumpForce = new Vector2(0, jumpStrength);
 	}
 	
 	// Update is called once per frame
 	private void Update ()
     {
+        GetMovementInput();
+        GetJumpInput();
         UpdateIsOnGround();
+    }
+
+    private void GetJumpInput()
+    {
+        if (Input.GetButtonDown("Jump") && isOnGround)
+        {
+            shouldJump = true;
+        }
+    }
+
+    private void GetMovementInput()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+    }
+
+    // Update is called once every fixed increment of time
+    private void FixedUpdate()
+    {
         Move();
-        Jump();
+        Jump();        
     }
 
     private void UpdateIsOnGround()
@@ -50,17 +73,17 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isOnGround)
+        if (shouldJump)
         {
-            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpStrength);
+            // myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpStrength);
+            myRigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
+            shouldJump = false;
         }
     }
 
     private void Move()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-
         myRigidbody.velocity =
             new Vector2(horizontalInput * movementSpeed, myRigidbody.velocity.y);
     }

@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844bda3b256a66448ee865bf9271c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinCountText: {fileID: 0}
 --- !u!212 &212383344843291124
 SpriteRenderer:
   m_ObjectHideFlags: 1

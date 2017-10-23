@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     LayerMask whatCountsAsGround;
 
 
+
+    private AudioSource audioSource;
     private bool isOnGround = false;
     private bool shouldJump = false;
     Rigidbody2D myRigidbody;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour {
         //transform.position = new Vector3(0, 0, 0);
 
         myRigidbody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         jumpForce = new Vector2(0, jumpStrength);
 	}
 	
@@ -79,6 +82,7 @@ public class PlayerMovement : MonoBehaviour {
             myRigidbody.AddForce(jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
             shouldJump = false;
+            audioSource.Play();
         }
     }
 

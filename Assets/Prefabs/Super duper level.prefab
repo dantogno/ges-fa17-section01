@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224755290725284272}
   m_Layer: 5
-  m_Name: Super duper leve
+  m_Name: Super duper level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3844bda3b256a66448ee865bf9271c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCountText: {fileID: 114008155987843292}
 --- !u!114 &114632370568060866
 MonoBehaviour:
   m_ObjectHideFlags: 1

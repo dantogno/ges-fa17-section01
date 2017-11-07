@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Ground" color="#aa5500"/>
+ <objecttype name="Hazard" color="#933fa4"/>
+</objecttypes>
